@@ -1,0 +1,8 @@
+create type user_role as enum ('requester','respondent','admin');
+create type answer_status as enum ('pending','valid','retry','invalid');
+create table profiles(id uuid primary key references auth.users(id), role user_role not null, display_name text, industry text, occupation text, experience_years int, created_at timestamptz default now());
+create table projects(id uuid primary key default gen_random_uuid(), requester_id uuid references profiles(id), title text not null, description text, target_profile text, validation_goal text, target_responses int default 5, status text default 'draft', created_at timestamptz default now());
+create table questions(id uuid primary key default gen_random_uuid(), project_id uuid references projects(id) on delete cascade, position int not null, question_text text not null, question_type text not null, required boolean default true);
+create table submissions(id uuid primary key default gen_random_uuid(), project_id uuid references projects(id), respondent_id uuid references profiles(id), status answer_status default 'pending', base_reward int default 100, quality_bonus int default 0, urgent_bonus int default 0, quality_score int, reviewed_at timestamptz, created_at timestamptz default now());
+create table answers(id uuid primary key default gen_random_uuid(), submission_id uuid references submissions(id) on delete cascade, question_id uuid references questions(id), answer_text text, answer_json jsonb);
+create table rewards(id uuid primary key default gen_random_uuid(), respondent_id uuid references profiles(id), submission_id uuid references submissions(id), amount int not null, status text default 'pending', paid_at timestamptz, created_at timestamptz default now());

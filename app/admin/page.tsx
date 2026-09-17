@@ -1,0 +1,1 @@
+export default function Admin(){return <main className="shell"><h1>運営管理</h1><div className="stats"><div><small>募集中</small><b>3</b></div><div><small>確認待ち回答</small><b>7</b></div><div><small>確定謝礼</small><b>¥1,600</b></div></div><div className="card"><h2>回答品質チェック</h2><p>回答内容を確認し「有効 / 要再回答 / 無効」を判定。将来ここをAI一次判定に置き換えます。</p><button>確認待ちを見る</button></div></main>}

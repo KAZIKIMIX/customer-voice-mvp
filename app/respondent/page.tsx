@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function Respondent(){return <main className="shell"><Link href="/">← TOP</Link><div className="headrow"><div><span className="tag">回答者マイページ</span><h1>あなたの経験が、<br/>新しいサービスを作る。</h1></div><Link className="primary buttonlink" href="/respondent/jobs">回答できる案件を見る</Link></div><div className="stats"><div>確定謝礼<b>500円</b></div><div>審査中<b>1件</b></div><div>有効回答<b>3件</b></div></div><div className="card"><h2>プロフィール</h2><p>建設・施工管理 / 経験5年以上</p><p>条件に合う案件だけを表示する仕組みにしていきます。</p></div></main>}
