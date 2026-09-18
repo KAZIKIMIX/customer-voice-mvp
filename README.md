@@ -20,3 +20,5 @@ npm run dev
 4. 回答フォーム
 5. 有効回答判定→reward生成
 6. 5回答成立→結果画面
+
+Deploy Preview test
